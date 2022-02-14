@@ -1,0 +1,79 @@
+{
+  "guests": [
+    {
+      "id": 1,
+      "firstname": "siema",
+      "lastname": "siema",
+      "phoneNumber": 1234567890,
+      "email": "siema@siema.pl",
+      "password": "siema"
+    }
+  ],
+  "hotels": [
+    {
+      "id": 1,
+      "name": "siema",
+      "country": "siema",
+      "city": "siema",
+      "address": "siema",
+      "stars": 4
+    },
+    {
+      "id": 1,
+      "name": "siema",
+      "country": "siema",
+      "city": "siema",
+      "address": "siema",
+      "stars": 4
+    },
+    {
+      "id": 1,
+      "name": "siema",
+      "country": "siema",
+      "city": "siema",
+      "address": "siema",
+      "stars": 4
+    },
+    {
+      "id": 1,
+      "name": "siema",
+      "country": "siema",
+      "city": "siema",
+      "address": "siema",
+      "stars": 4
+    }
+  ],
+  "hotelAdmins": [
+    {
+      "id": 1,
+      "hotelID": 1,
+      "username": "siema",
+      "password": "siema",
+      "createdOn": "siema",
+      "lastModifyOn": "siema",
+      "lastLoginIP": "siema"
+    }
+  ],
+  "reservations": [
+    {
+      "id": 1,
+      "hotelID": 1,
+      "roomID": 1,
+      "guestID": 1,
+      "checkInDate": "siema",
+      "checkOutDate": "siema",
+      "opinionID": 1,
+      "mark": 1,
+      "createdOn": "siema"
+    }
+  ],
+  "rooms": [
+    {
+      "id": 1,
+      "hotelID": 1,
+      "capacity": 1,
+      "photos": "siema",
+      "price": 1
+    }
+  ]
+}
