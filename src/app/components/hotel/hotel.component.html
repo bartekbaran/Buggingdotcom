@@ -1,0 +1,15 @@
+<mat-expansion-panel class="hotel-card"
+                     (opened)="panelOpenState = true"
+                     (closed)="panelOpenState = false">
+  <mat-expansion-panel-header>
+    <img src="siema.jpg" alt="{{ hotel.name }}">
+    <mat-panel-title>
+      {{ hotel.name }}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{ panelOpenState ? '' : 'Expand' }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <p>Location: {{ hotel.country }}, {{ hotel.city }}, {{ hotel.address }}</p>
+  <a mat-raised-button color="primary" routerLink="/hotel" >Show more</a>
+</mat-expansion-panel>

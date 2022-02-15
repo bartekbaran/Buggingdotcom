@@ -15,10 +15,20 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MatCardModule } from "@angular/material/card";
 import { HttpClientModule } from "@angular/common/http";
 import { SingleHotelComponent } from './components/single-hotel/single-hotel.component';
+import { MatExpansionModule } from "@angular/material/expansion";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import {MatMenuModule} from "@angular/material/menu";
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginAdminComponent } from './components/login-admin/login-admin.component';
+import {FormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 const appRoutes:Routes = [
   { path: '', component:HotelListComponent },
-  { path: 'hotel', component:SingleHotelComponent }
+  { path: 'hotel', component:SingleHotelComponent },
+  { path: 'loginGuest', component:LoginComponent },
+  { path: 'register', component:RegisterComponent }
 ]
 
 @NgModule({
@@ -29,17 +39,25 @@ const appRoutes:Routes = [
     HotelListComponent,
     HotelComponent,
     FooterComponent,
-    SingleHotelComponent
+    SingleHotelComponent,
+    LoginComponent,
+    RegisterComponent,
+    LoginAdminComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: true }),
+    RouterModule.forRoot(appRoutes, {enableTracing: true}),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule,
+    FontAwesomeModule,
+    MatMenuModule,
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

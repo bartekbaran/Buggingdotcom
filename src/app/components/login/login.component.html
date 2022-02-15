@@ -1,0 +1,17 @@
+<h1 style="margin-top: 50px; font-size: 50px" class="centered">Log in:</h1>
+<div class="centered">
+  <form class="add-form" layout-align="center center" (ngSubmit)="onSubmit()" *ngIf="logSuccessful == false">
+    <p style="margin-top: 50px; margin-bottom: 0px;">
+      <mat-form-field style="width: 300px" appearance="outline">
+        <mat-label>Login</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </p>
+    <p style="margin-top: 0;">
+      <mat-form-field style="width: 300px" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </p>
+  </form>
+</div>
