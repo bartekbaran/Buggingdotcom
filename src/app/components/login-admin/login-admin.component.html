@@ -1,1 +1,29 @@
-<p>login-admin works!</p>
+<h1 class="centered">Log in as a Hotel Admin:</h1>
+<div class="centered">
+  <form class="add-form" layout-align="center center" (ngSubmit)="onSubmit()" *ngIf="logSuccessful == false">
+    <p style="margin-top: 30px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          type="text"
+          name="login"
+          [(ngModel)]="login"
+          id="login"
+          matInput
+        />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          type="text"
+          name="password"
+          [(ngModel)]="password"
+          id="password"
+          matInput
+        />
+      </mat-form-field>
+    </p>
+  </form>
+</div>

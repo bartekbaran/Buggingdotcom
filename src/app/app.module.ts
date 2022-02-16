@@ -23,11 +23,13 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginAdminComponent } from './components/login-admin/login-admin.component';
 import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 const appRoutes:Routes = [
   { path: '', component:HotelListComponent },
   { path: 'hotel', component:SingleHotelComponent },
   { path: 'loginGuest', component:LoginComponent },
+  { path: 'loginAdmin', component:LoginAdminComponent },
   { path: 'register', component:RegisterComponent }
 ]
 
@@ -57,7 +59,8 @@ const appRoutes:Routes = [
     FontAwesomeModule,
     MatMenuModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

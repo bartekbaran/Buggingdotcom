@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Hotel} from "../../interfaces/hotel";
 import { faInfo } from "@fortawesome/free-solid-svg-icons";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-hotel',
@@ -15,7 +16,7 @@ export class HotelComponent implements OnInit {
 
   panelOpenState = false;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -24,4 +25,7 @@ export class HotelComponent implements OnInit {
     this.onSearchHotel.emit(hotel);
   }
 
+  goToHotel() {
+
+  }
 }
