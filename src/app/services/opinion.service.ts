@@ -15,21 +15,22 @@ const httpOptions = {
 })
 export class OpinionService {
 
-  private apiUrl:string = "http://localhost:3000/opinions";
+  private getOpinionsUrl:string = "https://s307243.labagh.pl/opinions";
+  private addOpinionUrl:string = "https://s307243.labagh.pl/opinions/add-new";
 
   constructor(private http:HttpClient) { }
 
   getOpinionsForHotel(hotel:Hotel):Observable<Opinion[]> {
-    const url = `${this.apiUrl}?hotelID=${hotel.id}`;
+    const url = `${this.getOpinionsUrl}/${hotel.hotel_id}`;
     return this.http.get<Opinion[]>(url);
   }
 
   getOpinionsForId(id:number):Observable<Opinion[]> {
-    const url = `${this.apiUrl}?hotelID=${id}`;
+    const url = `${this.getOpinionsUrl}/${id}`;
     return this.http.get<Opinion[]>(url);
   }
 
   addOpinion(opinion:Opinion):Observable<Opinion> {
-    return this.http.post<Opinion>(this.apiUrl, opinion, httpOptions);
+    return this.http.post<Opinion>(this.addOpinionUrl, opinion, httpOptions);
   }
 }

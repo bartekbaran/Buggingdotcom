@@ -12,7 +12,7 @@ export class AddCommentComponent implements OnInit {
 
   @Output() onAddOpinion: EventEmitter<Opinion> = new EventEmitter<Opinion>();
   @Input() hotelId:number;
-  opinion:string;
+  opinion: string;
   sliderValue: number;
 
   constructor(private loginService:LoginService,
@@ -22,7 +22,6 @@ export class AddCommentComponent implements OnInit {
   }
 
   submit() {
-    console.log("siema");
     if (this.loginService.currentAdminUser === undefined && this.loginService.currentGuestUser === undefined) {
       alert("You have to be logged!");
       this.opinion = '';
@@ -30,19 +29,20 @@ export class AddCommentComponent implements OnInit {
     } else {
       if (this.loginService.currentAdminUser !== undefined) {
         const newOpinion:Opinion = {
-          hotelID: this.hotelId,
-          author:this.loginService.currentAdminUser.email,
+          hotel_id: this.hotelId,
+          email: this.loginService.currentAdminUser.email,
           rate: this.sliderValue,
           opinion: this.opinion
         };
+        console.log(newOpinion);
         this.addOpinion(newOpinion);
 
         this.opinion = '';
         this.sliderValue = 1;
       } else {
         const newOpinion:Opinion = {
-          hotelID: this.hotelId,
-          author:this.loginService.currentGuestUser.email,
+          hotel_id: this.hotelId,
+          email: this.loginService.currentGuestUser.email,
           rate: this.sliderValue,
           opinion: this.opinion
         };

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GuestLoginAttempt} from "../../interfaces/guest";
+import {HotelsService} from "../../services/hotels.service";
+import {Hotel} from "../../interfaces/hotel";
 
 @Component({
   selector: 'app-main',
@@ -8,7 +10,7 @@ import {GuestLoginAttempt} from "../../interfaces/guest";
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private hotelService:HotelsService) { }
 
   ngOnInit(): void {
   }
@@ -17,4 +19,7 @@ export class MainComponent implements OnInit {
     return true;
   }
 
+  addHotel(hotel:Hotel) {
+    this.hotelService.addHotel(hotel);
+  }
 }

@@ -25,6 +25,10 @@ export class LoginComponent implements OnInit {
               private loginBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    if (this.loginService.currentGuestUser !== undefined) {
+      this.router.navigate(['/profile']).then();
+    }
+
     this.loginForm = this.loginBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -45,7 +49,7 @@ export class LoginComponent implements OnInit {
     const guestLoginAttempt: GuestLoginAttempt = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
-      isAdmin: false
+      is_admin: false
     }
 
     this.loading = true;
@@ -55,11 +59,12 @@ export class LoginComponent implements OnInit {
         data => {
           this.loginService.currentGuestUser = {
             id: data.id,
-            firstname: data.firstname,
-            lastname: data.lastname,
-            phoneNumber: data.phoneNumber,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            phone_no: data.phone_no,
             email: data.email,
-            password: data.password
+            password: data.password,
+            is_admin: false
           };
           this.router.navigate([`profile`]).then();
         }

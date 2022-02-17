@@ -30,3 +30,7 @@ h1 {
 mat-checkbox {
   margin-left: 60px;
 }
+
+mat-slider {
+  width: 300px;
+}

@@ -3,6 +3,8 @@ import {HotelAdmin} from "../../interfaces/hotel-admin";
 import {Guest} from "../../interfaces/guest";
 import {LoginService} from "../../services/login.service";
 import {Observable} from "rxjs";
+import {HotelsService} from "../../services/hotels.service";
+import {Hotel} from "../../interfaces/hotel";
 
 @Component({
   selector: 'app-profile',
@@ -14,8 +16,11 @@ export class ProfileComponent implements OnInit {
   adminProfile:HotelAdmin;
   guestProfile:Guest;
   currentProfile:number;
+  hotel:Hotel;
+  hotels:Hotel[];
 
-  constructor(private loginService:LoginService) { }
+  constructor(private loginService:LoginService,
+              private hotelService:HotelsService) { }
 
   ngOnInit(): void {
     if (this.loginService.currentAdminUser !== undefined) {
@@ -27,12 +32,16 @@ export class ProfileComponent implements OnInit {
     } else {
       this.currentProfile = 3;
     }
+    this.hotelService.getHotels().subscribe((hotels) => this.hotels = hotels);
   }
 
   currentUser():number {
     return this.currentProfile;
   }
 
-
-
+  deleteHotel(hotelId:number) {
+    this.hotelService.deleteHotel(hotelId).subscribe(
+      () => (this.hotels = this.hotels.filter((hotel) => hotel.hotel_id !== hotelId))
+    );
+  }
 }

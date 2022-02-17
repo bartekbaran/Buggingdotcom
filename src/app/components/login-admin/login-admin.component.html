@@ -28,11 +28,11 @@
       </mat-form-field>
     </p>
     <p>
-      <button [disabled]="loading" class="mat-button">
+      <button style="margin-left: 50px" mat-raised-button color="primary" [disabled]="loading" class="mat-button">
         <span *ngIf="loading"></span>
         Login
       </button>
-      <a routerLink="/register">Register </a>
+      <a style="margin-left: 50px" class="mat-raised-button mat-primary" routerLink="/register">Register </a>
     </p>
   </form>
 </div>

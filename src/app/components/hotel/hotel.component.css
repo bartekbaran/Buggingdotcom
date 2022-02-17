@@ -9,3 +9,9 @@ img {
   width: 100%;
   margin-bottom: 32px
 }
+
+.button {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}

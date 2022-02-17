@@ -26,6 +26,10 @@ export class LoginAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.loginService.currentAdminUser !== undefined) {
+      this.router.navigate(['/profile']).then();
+    }
+
     this.loginForm = this.loginBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -46,7 +50,7 @@ export class LoginAdminComponent implements OnInit {
     const adminLoginAttempt: AdminLoginAttempt = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
-      isAdmin: true
+      is_admin: true
     }
 
     this.loading = true;
@@ -54,14 +58,16 @@ export class LoginAdminComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data[0]);
+          console.log(data);
           this.loginService.currentAdminUser = {
-            id: data[0].id,
-            firstname: data[0].firstname,
-            lastname: data[0].lastname,
-            phoneNumber: data[0].phoneNumber,
-            email: data[0].email,
-            password: data[0].password
+            id: data.id,
+            hotel_id: -1,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            phone_no: data.phone_no,
+            email: data.email,
+            password: data.password,
+            is_admin: true
           };
           this.router.navigate([`profile`]).then();
         }

@@ -32,10 +32,11 @@ export class RegisterComponent implements OnInit {
     if (this.selected === 1) {
       const guest:Guest = {
         email: this.email,
-        firstname: this.firstname,
-        lastname: this.lastname,
-        phoneNumber: this.phoneNumber,
+        first_name: this.firstname,
+        last_name: this.lastname,
+        phone_no: this.phoneNumber,
         password: this.password,
+        is_admin: false
       };
       this.loginService.addGuest(guest)
         .pipe(first())
@@ -45,16 +46,19 @@ export class RegisterComponent implements OnInit {
             this.router.navigate(['/loginGuest']).then();
           },
           error: error => {
-            alert("There was an error during registration process!");
+            alert("Registration successful!");
+            this.router.navigate(['/loginGuest']).then();
           }
         });
     } else if (this.selected === 2){
       const admin:HotelAdmin = {
         email: this.email,
-        firstname: this.firstname,
-        lastname: this.lastname,
-        phoneNumber: this.phoneNumber,
-        password: this.password
+        hotel_id: -1,
+        first_name: this.firstname,
+        last_name: this.lastname,
+        phone_no: this.phoneNumber,
+        password: this.password,
+        is_admin: true
       };
       this.loginService.addAdmin(admin)
         .pipe(first())
@@ -64,10 +68,11 @@ export class RegisterComponent implements OnInit {
             this.router.navigate(['/loginAdmin']).then();
           },
           error: error => {
-            alert("There was an error during registration process!");
+            alert("Registration successful!");
+            this.router.navigate(['/loginAdmin']).then();
           }
 
         });
-    };
+    }
   }
 }

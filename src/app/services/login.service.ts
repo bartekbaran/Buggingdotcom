@@ -18,8 +18,9 @@ export class LoginService {
   public currentGuestUser:Guest;
   public currentAdminUser:HotelAdmin;
 
-  private apiGuestUrl:string = "http://localhost:2115/authentication/log-in-guest";
-  private apiAdminUrl:string = "http://localhost:3000/hotelAdmins";
+  private apiRegisterUrl:string = "https://s307243.labagh.pl/authentication/registration";
+  private apiGuestUrl:string = "https://s307243.labagh.pl/authentication/log-in-guest";
+  private apiAdminUrl:string = "https://s307243.labagh.pl/authentication/log-in-admin";
 
   constructor(private http:HttpClient) { }
 
@@ -27,18 +28,16 @@ export class LoginService {
     return this.http.post<Guest>(this.apiGuestUrl, loginAttempt);
   }
 
-  getAdmin(loginAttempt:AdminLoginAttempt):Observable<HotelAdmin[]> {
-    const url = `${this.apiAdminUrl}?username=${loginAttempt.email}&password=${loginAttempt.password}`;
-    this.http.get<HotelAdmin[]>(url).subscribe(admin => this.currentAdminUser = admin[0]);
-    return this.http.get<HotelAdmin[]>(url);
+  getAdmin(loginAttempt:AdminLoginAttempt):Observable<HotelAdmin> {
+    return this.http.post<HotelAdmin>(this.apiAdminUrl, loginAttempt, httpOptions);
   }
 
   addGuest(guest:Guest):Observable<Guest> {
-    return this.http.post<Guest>(this.apiGuestUrl, guest, httpOptions)
+    return this.http.post<Guest>(this.apiRegisterUrl, guest, httpOptions)
   }
 
   addAdmin(admin:HotelAdmin):Observable<HotelAdmin> {
-    return this.http.post<HotelAdmin>(this.apiAdminUrl, admin, httpOptions);
+    return this.http.post<HotelAdmin>(this.apiRegisterUrl, admin, httpOptions);
   }
 
   isUserLogged():Observable<boolean> {

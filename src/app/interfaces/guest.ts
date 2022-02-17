@@ -1,14 +1,15 @@
 export interface Guest {
   id?: number;
-  firstname: string;
-  lastname: string;
-  phoneNumber: number;
   email: string;
+  first_name: string;
+  last_name: string;
+  phone_no: number;
   password: string;
+  is_admin: boolean;
 }
 
 export interface GuestLoginAttempt {
   email: string;
   password: string;
-  isAdmin: boolean;
+  is_admin: boolean;
 }

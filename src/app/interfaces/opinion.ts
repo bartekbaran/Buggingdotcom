@@ -1,7 +1,8 @@
 export interface Opinion {
   id?: number;
-  hotelID: number;
-  author: string;
+  reservation_id?: number;
+  hotel_id: number;
+  email: string;
   rate: number;
   opinion: string;
   createdOn?: string;

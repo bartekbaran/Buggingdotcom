@@ -36,6 +36,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
 import {MatSliderModule} from "@angular/material/slider";
 import { MatNativeDateModule } from '@angular/material/core';
+import { AddHotelComponent } from './components/add-hotel/add-hotel.component';
+import { EditHotelComponent } from './components/edit-hotel/edit-hotel.component';
+import { DeleteHotelComponent } from './components/delete-hotel/delete-hotel.component';
 
 const appRoutes:Routes = [
   { path: '', component:HotelListComponent },
@@ -44,7 +47,9 @@ const appRoutes:Routes = [
   { path: 'loginGuest', component:LoginComponent },
   { path: 'loginAdmin', component:LoginAdminComponent },
   { path: 'register', component:RegisterComponent },
-  { path: 'reservation/:room_id', component:ReservationComponent }
+  { path: 'reservation/:room_id', component:ReservationComponent },
+  { path: 'addHotel', component:AddHotelComponent },
+  { path: 'editHotel', component:EditHotelComponent }
 ]
 
 @NgModule({
@@ -67,7 +72,10 @@ const appRoutes:Routes = [
     RoomListComponent,
     RoomComponent,
     ReservationComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    AddHotelComponent,
+    EditHotelComponent,
+    DeleteHotelComponent
   ],
   imports: [
     BrowserModule,
