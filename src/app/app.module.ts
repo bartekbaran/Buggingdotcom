@@ -21,16 +21,30 @@ import {MatMenuModule} from "@angular/material/menu";
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginAdminComponent } from './components/login-admin/login-admin.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { ProfileComponent } from './components/profile/profile.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ProfileNotFoundComponent } from './components/profile-not-found/profile-not-found.component';
+import { OpinionListComponent } from './components/opinion-list/opinion-list.component';
+import { OpinionComponent } from './components/opinion/opinion.component';
+import { RoomListComponent } from './components/room-list/room-list.component';
+import { RoomComponent } from './components/room/room.component';
+import { ReservationComponent } from './components/reservation/reservation.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
+import {MatSliderModule} from "@angular/material/slider";
+import { MatNativeDateModule } from '@angular/material/core';
 
 const appRoutes:Routes = [
   { path: '', component:HotelListComponent },
-  { path: 'hotel', component:SingleHotelComponent },
+  { path: 'hotel/:hotel_id', component:SingleHotelComponent },
+  { path: 'profile', component:ProfileComponent },
   { path: 'loginGuest', component:LoginComponent },
   { path: 'loginAdmin', component:LoginAdminComponent },
-  { path: 'register', component:RegisterComponent }
+  { path: 'register', component:RegisterComponent },
+  { path: 'reservation/:room_id', component:ReservationComponent }
 ]
 
 @NgModule({
@@ -44,7 +58,16 @@ const appRoutes:Routes = [
     SingleHotelComponent,
     LoginComponent,
     RegisterComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
+    ProfileComponent,
+    UserProfileComponent,
+    ProfileNotFoundComponent,
+    OpinionListComponent,
+    OpinionComponent,
+    RoomListComponent,
+    RoomComponent,
+    ReservationComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +83,11 @@ const appRoutes:Routes = [
     MatMenuModule,
     FormsModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatSliderModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

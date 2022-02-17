@@ -17,6 +17,6 @@ export class HotelListComponent implements OnInit {
   }
 
   searchForHotel(hotel:Hotel) {
-    this.hotelService.getHotel(hotel);
+    this.hotelService.getHotelByHotel(hotel);
   }
 }

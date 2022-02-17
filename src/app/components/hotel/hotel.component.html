@@ -9,7 +9,7 @@
       {{ panelOpenState ? 'Shrink' : 'Expand' }}
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <img src="/src/assets/images/siema.png" alt="{{ hotel.name }}">
+  <img src="/assets/images/siema.png" alt="{{ hotel.name }}">
   <p>Location: {{ hotel.country }}, {{ hotel.city }}, {{ hotel.address }}</p>
-  <a mat-raised-button color="primary" routerLink="/hotel">Show more</a>
+  <a mat-raised-button color="primary" routerLink="/hotel/{{ hotel.id }}">Show more</a>
 </mat-expansion-panel>

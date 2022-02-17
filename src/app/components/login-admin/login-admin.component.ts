@@ -1,7 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Guest, GuestLoginAttempt} from "../../interfaces/guest";
-import {Observable} from "rxjs";
+import {GuestLoginAttempt} from "../../interfaces/guest";
 import {LoginService} from "../../services/login.service";
+import {AdminLoginAttempt, HotelAdmin} from "../../interfaces/hotel-admin";
+import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-login-admin',
@@ -10,35 +13,58 @@ import {LoginService} from "../../services/login.service";
 })
 export class LoginAdminComponent implements OnInit {
   @Output() onLogin: EventEmitter<GuestLoginAttempt> = new EventEmitter();
-  login: string;
+  email: string;
   password: string;
-  profile: Observable<Guest>;
-  logSuccessful:boolean = false;
+  profile: HotelAdmin;
+  submitted: boolean = false;
+  loading: boolean = false;
+  loginForm: FormGroup;
 
-  constructor(private loginService:LoginService) { }
+  constructor(private loginService: LoginService,
+              private router: Router,
+              private loginBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
+    this.loginForm = this.loginBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  get f() {
+    return this.loginForm.controls;
   }
 
   onSubmit() {
-    if (!this.login) {
-      alert('Please specify your login!');
+    this.submitted = true;
+
+    if (this.loginForm.invalid) {
       return;
     }
 
-    if (!this.password) {
-      alert('Please specify your password!')
+    const adminLoginAttempt: AdminLoginAttempt = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+      isAdmin: true
     }
 
-    const newGuestLoginAttempt:GuestLoginAttempt = {
-      login: this.login,
-      password: this.password
-    }
-
-    this.profile = this.loginService.getGuest(newGuestLoginAttempt)
-    this.logSuccessful = true;
-
-    this.login = '';
-    this.password = '';
+    this.loading = true;
+    this.loginService.getAdmin(adminLoginAttempt)
+      .pipe(first())
+      .subscribe(
+        data => {
+          console.log(data[0]);
+          this.loginService.currentAdminUser = {
+            id: data[0].id,
+            firstname: data[0].firstname,
+            lastname: data[0].lastname,
+            phoneNumber: data[0].phoneNumber,
+            email: data[0].email,
+            password: data[0].password
+          };
+          this.router.navigate([`profile`]).then();
+        }
+      );
   }
 }

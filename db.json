@@ -7,51 +7,102 @@
       "phoneNumber": 1234567890,
       "email": "siema@siema.pl",
       "password": "siema"
+    },
+    {
+      "email": "asd@asd.pl",
+      "firstname": "asd",
+      "lastname": "asd",
+      "phoneNumber": "asdasdasd",
+      "password": "asdasd",
+      "id": 2
+    },
+    {
+      "email": "asdasd@asd.pl",
+      "firstname": "asd",
+      "lastname": "asd",
+      "phoneNumber": "asdasdasd",
+      "password": "asdasd",
+      "id": 3
     }
   ],
   "hotels": [
     {
       "id": 1,
-      "name": "siema",
-      "country": "siema",
-      "city": "siema",
-      "address": "siema",
+      "name": "siema1",
+      "country": "siema1",
+      "city": "siema1",
+      "address": "siema1",
       "stars": 4
     },
     {
-      "id": 1,
-      "name": "siema",
-      "country": "siema",
-      "city": "siema",
-      "address": "siema",
-      "stars": 4
+      "id": 2,
+      "name": "siema2",
+      "country": "siema2",
+      "city": "siema2",
+      "address": "siema2",
+      "stars": 2
     },
     {
-      "id": 1,
-      "name": "siema",
-      "country": "siema",
-      "city": "siema",
-      "address": "siema",
-      "stars": 4
+      "id": 3,
+      "name": "siema3",
+      "country": "siema3",
+      "city": "siema3",
+      "address": "siema3",
+      "stars": 3
     },
     {
-      "id": 1,
-      "name": "siema",
-      "country": "siema",
-      "city": "siema",
-      "address": "siema",
+      "id": 4,
+      "name": "siema4",
+      "country": "siema4",
+      "city": "siema4",
+      "address": "siema4",
       "stars": 4
     }
   ],
   "hotelAdmins": [
     {
       "id": 1,
-      "hotelID": 1,
-      "username": "siema",
-      "password": "siema",
-      "createdOn": "siema",
-      "lastModifyOn": "siema",
-      "lastLoginIP": "siema"
+      "firstname": "siema1",
+      "lastname": "siema1",
+      "phoneNumber": "123456789",
+      "email": "siema1@siema.pl",
+      "password": "siema1",
+      "createdOn": "siema1",
+      "lastModifyOn": "siema1",
+      "lastLoginIP": "siema1",
+      "hotelID": 1
+    },
+    {
+      "id": 2,
+      "firstname": "siema2",
+      "lastname": "siema2",
+      "phoneNumber": "123456789",
+      "email": "siema2@siema.pl",
+      "password": "siema2",
+      "createdOn": "siema2",
+      "lastModifyOn": "siema2",
+      "lastLoginIP": "siema2",
+      "hotelID": 2
+    },
+    {
+      "id": 3,
+      "firstname": "siema3",
+      "lastname": "siema3",
+      "phoneNumber": "123456789",
+      "email": "siema3@siema.pl",
+      "password": "siema3",
+      "createdOn": "siema3",
+      "lastModifyOn": "siema3",
+      "lastLoginIP": "siema3",
+      "hotelID": 3
+    },
+    {
+      "email": "asd@asd.pl",
+      "firstname": "asd",
+      "lastname": "asd",
+      "phoneNumber": "asdasdasd",
+      "password": "asdasd",
+      "id": 4
     }
   ],
   "reservations": [
@@ -72,8 +123,66 @@
       "id": 1,
       "hotelID": 1,
       "capacity": 1,
-      "photos": "siema",
+      "photos": "siema2.jpg",
       "price": 1
+    },
+    {
+      "id": 2,
+      "hotelID": 1,
+      "capacity": 1,
+      "photos": "siema.png",
+      "price": 1
+    },
+    {
+      "id": 3,
+      "hotelID": 1,
+      "capacity": 1,
+      "photos": "siema2.jpg",
+      "price": 1
+    },
+    {
+      "id": 4,
+      "hotelID": 1,
+      "capacity": 1,
+      "photos": "siema.png",
+      "price": 1
+    }
+  ],
+  "opinions": [
+    {
+      "id": 1,
+      "hotelID": 1,
+      "author": "autor1 siema asdasdas",
+      "rate": 4,
+      "opinion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lorem augue. Morbi ut nunc a elit vulputate eleifend. Ut ultrices cursus felis, a consectetur metus luctus eu. Mauris in diam et justo accumsan sollicitudin at ac massa. Nam ut ultricies libero."
+    },
+    {
+      "id": 2,
+      "hotelID": 1,
+      "author": "autor2 siema asd asd",
+      "rate": 4,
+      "opinion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lorem augue. Morbi ut nunc a elit vulputate eleifend. Ut ultrices cursus felis, a consectetur metus luctus eu. Mauris in diam et justo accumsan sollicitudin at ac massa. Nam ut ultricies libero."
+    },
+    {
+      "id": 3,
+      "hotelID": 1,
+      "author": "autor3 siema asdas d",
+      "rate": 4,
+      "opinion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lorem augue. Morbi ut nunc a elit vulputate eleifend. Ut ultrices cursus felis, a consectetur metus luctus eu. Mauris in diam et justo accumsan sollicitudin at ac massa. Nam ut ultricies libero."
+    },
+    {
+      "id": 4,
+      "hotelID": 1,
+      "author": "autor4 siema asddsa",
+      "rate": 4,
+      "opinion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lorem augue. Morbi ut nunc a elit vulputate eleifend. Ut ultrices cursus felis, a consectetur metus luctus eu. Mauris in diam et justo accumsan sollicitudin at ac massa. Nam ut ultricies libero."
+    },
+    {
+      "hotelID": "1",
+      "author": "asd@asd.pl",
+      "rate": 3,
+      "opinion": "asdasdasd",
+      "id": 5
     }
   ]
 }

@@ -1,5 +1,5 @@
 export interface Guest {
-  id: number;
+  id?: number;
   firstname: string;
   lastname: string;
   phoneNumber: number;
@@ -8,6 +8,7 @@ export interface Guest {
 }
 
 export interface GuestLoginAttempt {
-  login: string;
+  email: string;
   password: string;
+  isAdmin: boolean;
 }

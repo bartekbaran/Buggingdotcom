@@ -5,6 +5,15 @@
   flex-direction: column;
 }
 
+div {
+  color: white;
+}
+
+span {
+  top: -10px;
+  color: red;
+}
+
 mat-form-field {
   width: 300px;
 }

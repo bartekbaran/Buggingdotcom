@@ -1,0 +1,15 @@
+<div class="centered" *ngIf="currentProfile === 1">
+  <h1>Your profile:</h1>
+  <p>Firstname: {{ this.adminProfile.firstname }}</p>
+  <p>Lastname: {{ this.adminProfile.lastname }}</p>
+  <p>Phone number: {{ this.adminProfile.phoneNumber }}</p>
+  <p>Email: {{ this.adminProfile.email }}</p>
+
+</div>
+<div class="centered" *ngIf="currentProfile === 2">
+  <h1>Your profile:</h1>
+  <p>Firstname: {{ this.guestProfile.firstname }}</p>
+  <p>Lastname: {{ this.guestProfile.lastname }}</p>
+  <p>Phone number: {{ this.guestProfile.phoneNumber }}</p>
+  <p>Email: {{ this.guestProfile.email }}</p>
+</div>

@@ -5,7 +5,7 @@ export interface Reservation {
   guestID: number;
   checkInDate: string;
   checkOutDate: string;
-  opinionID: number;
+  opinionID?: number;
   mark: number;
   createdOn: string;
 }

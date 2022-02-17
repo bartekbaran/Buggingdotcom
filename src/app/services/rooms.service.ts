@@ -12,8 +12,8 @@ export class RoomsService {
 
   constructor(private http:HttpClient) { }
 
-  getRoomsForHotel(hotel:Hotel) {
-    const url = `${this.apiUrl}/${hotel.id}`;
+  getRoomsForId(id:number) {
+    const url = `${this.apiUrl}?hotelID=${id}`;
     return this.http.get<Room[]>(url);
   }
 }

@@ -1,3 +1,7 @@
+div {
+  color: white;
+}
+
 .centered {
   display: flex;
   justify-content: center;

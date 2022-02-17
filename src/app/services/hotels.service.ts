@@ -22,7 +22,12 @@ export class HotelsService {
     return this.http.get<Hotel[]>(this.apiUrl);
   }
 
-  getHotel(hotel:Hotel):Observable<Hotel> {
+  getHotelById(hotelId:number):Observable<Hotel> {
+    const url = `${this.apiUrl}/${hotelId}`;
+    return this.http.get<Hotel>(url);
+  }
+
+  getHotelByHotel(hotel:Hotel):Observable<Hotel> {
     const url = `${this.apiUrl}/${hotel.id}`;
     return this.http.get<Hotel>(url);
   }

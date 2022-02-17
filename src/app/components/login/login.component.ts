@@ -1,7 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Guest, GuestLoginAttempt} from "../../interfaces/guest";
 import {LoginService} from "../../services/login.service";
-import {Observable} from "rxjs";
+import {first, Observable} from "rxjs";
+import {AdminLoginAttempt, HotelAdmin} from "../../interfaces/hotel-admin";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -10,36 +13,56 @@ import {Observable} from "rxjs";
 })
 export class LoginComponent implements OnInit {
   @Output() onLogin: EventEmitter<GuestLoginAttempt> = new EventEmitter();
-  login: string;
+  email: string;
   password: string;
-  profile: Observable<Guest>;
+  profile: HotelAdmin;
+  submitted: boolean = false;
+  loading: boolean = false;
+  loginForm: FormGroup;
 
-  logSuccessful:boolean = false;
+  constructor(private loginService:LoginService,
+              private router:Router,
+              private loginBuilder: FormBuilder) { }
 
-  constructor(private loginService:LoginService) { }
+  ngOnInit(): void {
+    this.loginForm = this.loginBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    })
+  }
 
-  ngOnInit(): void {}
-
+  get f() {
+    return this.loginForm.controls;
+  }
 
   onSubmit() {
-    if (!this.login) {
-      alert('Please specify your login!');
+    this.submitted = true;
+
+    if (this.loginForm.invalid) {
       return;
     }
 
-    if (!this.password) {
-      alert('Please specify your password!')
+    const guestLoginAttempt: GuestLoginAttempt = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+      isAdmin: false
     }
 
-    const newGuestLoginAttempt:GuestLoginAttempt = {
-      login: this.login,
-      password: this.password
-    }
-
-    this.profile = this.loginService.getGuest(newGuestLoginAttempt)
-    this.logSuccessful = true;
-
-    this.login = '';
-    this.password = '';
+    this.loading = true;
+    this.loginService.getGuest(guestLoginAttempt)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.loginService.currentGuestUser = {
+            id: data.id,
+            firstname: data.firstname,
+            lastname: data.lastname,
+            phoneNumber: data.phoneNumber,
+            email: data.email,
+            password: data.password
+          };
+          this.router.navigate([`profile`]).then();
+        }
+      );
   }
 }
